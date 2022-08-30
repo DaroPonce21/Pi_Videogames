@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { getAllVideogames } from "../redux/actions";
@@ -10,11 +10,11 @@ export const Videogames = ({currentGames}) => {
     const dispatch = useDispatch()
     const [carga, setCarga] = useState(true);
 
-    React.useEffect(() => {
-        dispatch(getAllVideogames()).then(() => setCarga(false)) //me traigo la action creators q me trae todos mis videojuegos de la API
+    useEffect(() => {
+        dispatch(getAllVideogames()).then(() => setCarga(false)) 
     }, [dispatch])
 
-    //const allVideogames = useSelector(state => state.allVideogames) //me traigo del reducer el estado en donde guarde todos mis videojuegos
+ 
 
     if (carga) {
         return <Loading />;

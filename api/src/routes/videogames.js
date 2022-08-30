@@ -7,7 +7,7 @@ const router = Router();
 
 
 router.get('/', async (req, res, next) => {
-    const { name } = req.query; //el nombre me llega por query
+    const { name } = req.query; 
     let allVideogames = await infoTotal()
 
     if(name) { 

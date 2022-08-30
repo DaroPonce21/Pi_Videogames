@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Funtions from './Funtions'
 import NavBar from "./NavBar";
@@ -10,23 +10,20 @@ import '../style/Home.css'
 export default function Home () {
     const allGames = useSelector(state => state.allVideogames)
 
-    const [currentPage, setCurrentPage] = useState(1) //lo seteo en 1 porque siempre arranco por la primer pagina
-    const gamesPerPage = 15//cantidad de juegos que debe haber por pagina
-    const indexOfLastGame = currentPage * gamesPerPage // 1 * 15 = 15
-    const indexOfFirstGame= indexOfLastGame - gamesPerPage // 15 - 15 = 0
-    const currentGames = allGames.slice(indexOfFirstGame, indexOfLastGame) //para dividir la cantidad de juegos por pagina
+    const [currentPage, setCurrentPage] = useState(1) 
+    const gamesPerPage = 15
+    const indexOfLastGame = currentPage * gamesPerPage 
+    const indexOfFirstGame= indexOfLastGame - gamesPerPage 
+    const currentGames = allGames.slice(indexOfFirstGame, indexOfLastGame) 
 
     const dispatch = useDispatch()
 
-    const paginado = (pageNumber) => { //establece el numero de pagina
+    const paginado = (pageNumber) => { 
         setCurrentPage(pageNumber)
     }
-    //const paginado = (5) => {
-        //setCurrentPage(5)
-    //}
 
 
-    React.useEffect(() => {
+    useEffect(() => {
         window.scrollTo(0, 0);
     }, [currentPage])
 
@@ -72,7 +69,7 @@ export default function Home () {
                 <h1 className='h1home'>INSERT COIN</h1>
             </div>
             <div>
-                <Videogames currentGames={currentGames}/> {/*porcion de juegos que se van a renderizar por pagina*/}
+                <Videogames currentGames={currentGames}/>
             </div>
             <div>
                 <Paginado 

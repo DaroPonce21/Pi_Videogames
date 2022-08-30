@@ -65,14 +65,14 @@ export default function Create() {
     e.preventDefault();
     let noRepeat = allNames.filter(n => n.name === input.name)
     if (noRepeat.length !== 0) {
-      alert('Ya existe un juego con ese nombre, por favor elija otro')
+      alert('There is already a game with that name, please choose another')
     } else if (!Object.getOwnPropertyNames(errors).length && input.name && input.description && input.released && input.rating) {
 
       if (!input.image) {
         input.image = Generico
       }
       dispatch(createVideogame(input));
-      alert("Felicidades, el juego fue creado exitosamente.");
+      alert("Congratulations, the game was created successfully.");
       setInput({
         name: "",
         image: "",
@@ -84,7 +84,7 @@ export default function Create() {
       });
       navigate('/home')
     } else {
-      alert('El juego no se creo, revise los campos')
+      alert('The game was not created, check the fields')
     }
   }
 

@@ -11,7 +11,7 @@ export const FILTER_BY_GENRES = "FILTER_BY_GENRES";
 export const GET_PLATFORMS = 'GET_PLATFORMS'
 export const DELETE_VIDEOGAME = 'DELETE_VIDEOGAME'
 export const CLEAN_GAME = 'CLEAN_GAME'
-export const CLEANER= 'CLEANER'
+export const CLEANER = 'CLEANER'
 
 export const getAllVideogames = () => {
     return async (dispatch) => {
@@ -124,8 +124,8 @@ export const getPlatforms = () => {
     }
 };
 
-export function deleteGame(id){
-    return async function (dispatch){
+export function deleteGame(id) {
+    return async function (dispatch) {
         try {
             const deleteVideogame = await axios.delete(`http://localhost:3001/videogame/${id}`)
             return dispatch({

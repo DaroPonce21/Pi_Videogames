@@ -4,26 +4,26 @@ import { useDispatch } from 'react-redux';
 import { getNames } from '../redux/actions'
 import '../style/SearchBar.css'
 
-export default function SearchBar () {
-    const [state, setState] = useState('') //me creo un estado local cuyo valor incial es vacio
+export default function SearchBar() {
+    const [state, setState] = useState('')
     const dispatch = useDispatch()
 
-    function handleChange(e) { //cada vez que escriba algo en la barra de busqueda
+    function handleChange(e) {
         e.preventDefault()
-        setState(e.target.value) //a mi estado incial lo seteo con el valor que voy ingresando en mi busqueda
+        setState(e.target.value)
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        if(state.length > 1) { //si escribo algo en mi barra de busqueda
+        if (state.length > 1) {
             dispatch(getNames(state))
-            setState('') //para limpiar mi busqueda
+            setState('')
         } else {
             alert(`I don't enter anything in the search`)
         }
     }
 
-    
+
     return (
         <>
             <input

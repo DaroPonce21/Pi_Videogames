@@ -24,18 +24,18 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {
-        case GET_ALL_VIDEOGAMES: //para mi home
+        case GET_ALL_VIDEOGAMES:
             return {
                 ...state,
                 allVideogames: action.payload,
-                videogames: action.payload //de reserva
+                videogames: action.payload
             };
-        case GET_NAMES: //para mi searchbar
+        case GET_NAMES:
             return {
                 ...state,
                 allVideogames: action.payload
             };
-        case GET_VIDEOGAME: //para mi ruta de detalle
+        case GET_VIDEOGAME:
             return {
                 ...state,
                 videogame: action.payload
@@ -50,7 +50,7 @@ function rootReducer(state = initialState, action) {
                 ...state
             }
         case ORDER_BY:
-            let vgCopy = [...state.allVideogames]; //hago una copia de mi estado importante
+            let vgCopy = [...state.allVideogames];
             let ordenamiento
 
             switch (action.payload) {
