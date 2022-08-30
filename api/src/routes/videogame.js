@@ -44,4 +44,19 @@ router.post('/', async (req, res, next) => {
     }
 })
 
+router.delete("/:id", async function (req, res) {
+    const { id } = req.params;
+    try {
+        if (id) {
+            await Videogame.destroy({
+                where: { id: id },
+            });
+            res.send({ msg: "Game deleted" });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
 module.exports = router;

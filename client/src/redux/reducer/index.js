@@ -7,7 +7,10 @@ import {
     ORDER_BY,
     FILTER_BY_SOURCE,
     FILTER_BY_GENRES,
-    GET_PLATFORMS
+    GET_PLATFORMS,
+    DELETE_VIDEOGAME,
+    CLEAN_GAME,
+    CLEANER,
 } from '../actions'
 
 const initialState = {
@@ -15,7 +18,8 @@ const initialState = {
     videogames: [],
     videogame: [],
     genres: [],
-    platforms: []
+    platforms: [],
+    loader: true
 }
 
 function rootReducer(state = initialState, action) {
@@ -133,6 +137,17 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 platforms: [...action.payload]
             }
+        case DELETE_VIDEOGAME:
+            return { ...state }
+        case CLEAN_GAME:
+            return { ...state, loader: true }
+
+        case CLEANER: {
+            return {
+                ...state,
+                videogame: {}
+            }
+        }
         default:
             return {
                 ...state,

@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getVideogame } from "../redux/actions";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { cleaner, cleanGame, deleteGame, getVideogame } from "../redux/actions";
 import Loading from './Loading'
 import '../style/Detail.css'
 
@@ -10,12 +10,27 @@ export default function Detail(props) {
     const [carga, setCarga] = useState(true);
     const { id } = useParams()
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
+    
     useEffect(() => {
         dispatch(getVideogame(id)).then(() => setCarga(false))
     }, [dispatch, id])
 
     const myVideogame = useSelector(state => state.videogame)
+
+    function handleDelete(e){
+    const ID = id.includes("-")
+        if(ID){
+            e.preventDefault()
+            dispatch(cleanGame())
+            dispatch(deleteGame(id))
+            dispatch(cleaner())
+            alert('Videogame destroit')
+            navigate('/home')
+        }else{
+            alert('You only can eliminate your videogames')
+        }
+    }
 
     if (carga) {
         return <Loading />;
@@ -29,6 +44,7 @@ export default function Detail(props) {
             <Link to='/create'>
                 <button className="welcome"><span>Create Videogame</span></button>
             </Link>
+            <button onClick={(e) => handleDelete(e)} className='welcome'><span>Delete Game</span></button>
 
             <div>
                 <h1 className="name">{myVideogame.name}</h1>

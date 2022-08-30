@@ -6,6 +6,7 @@
     text-align: center;
 }
 
+
 .buttonHome {
     border-radius: 4px;
     background-color: #121212;
@@ -70,12 +71,21 @@ input {
     margin: 50px;
     color: #fff;
 }
+textarea {
+    background-color: #121212;
+    border-radius: 4px;
+    margin: 50px;
+    color: #fff;
+}
 
 input:focus {
     background-color: rgb(52, 52, 52);
     color: whitesmoke;
 }
-
+textarea:focus  {
+    background-color: rgb(52, 52, 52);
+    color: whitesmoke;
+}
 .allSelecction {
     display: inline-block;
 

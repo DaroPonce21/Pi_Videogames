@@ -1,16 +1,13 @@
 const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
-  // defino el modelo
   sequelize.define('videogame', {
-    id: { //preguntar por este id, porque sequelize te genera uno automaticamente
-      type: DataTypes.UUID, //genera un numero random con letras y numeros
-      defaultValue: DataTypes.UUIDV4, //me genera automaticamente un UUISV4
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       unique: true,
       primaryKey: true,
-      allowNull: false //allowNull(permite un vacio) --> FALSO
-   }, 
+      allowNull: false
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
